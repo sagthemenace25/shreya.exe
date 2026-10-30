@@ -189,13 +189,13 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
 
 /* The object is the seam: it travels sideways while the new page is pulled in behind it */
 .hobby-transition{isolation:isolate;background:#151419}
-.hobby-gallery{position:absolute;inset:0;z-index:0;overflow:auto;clip-path:inset(0 100% 0 0);animation:page-follow 1.38s cubic-bezier(.76,0,.22,1) forwards;animation-delay:.02s}
+.hobby-gallery{position:absolute;inset:0;z-index:0;overflow:auto;clip-path:inset(0 100% 0 0);animation:page-follow 2.8s cubic-bezier(.76,0,.22,1) forwards;animation-delay:.02s}
 @keyframes page-follow{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
 .flight-stage{position:absolute;inset:0;z-index:2;pointer-events:none;background:transparent;display:block}
-.flight-object{position:absolute;left:50%;top:50%;width:min(48vw,570px);height:min(76vh,680px);transform:translate(-50%,-50%);animation:pencil-wipe 1.38s cubic-bezier(.66,0,.24,1) forwards;filter:drop-shadow(0 0 40px #c5b3f5aa) drop-shadow(0 18px 35px #0009)}
+.flight-object{position:absolute;left:50%;top:50%;width:min(48vw,570px);height:min(76vh,680px);transform:translate(-50%,-50%);animation:pencil-wipe 2.8s cubic-bezier(.66,0,.24,1) forwards;filter:drop-shadow(0 0 40px #c5b3f5aa) drop-shadow(0 18px 35px #0009)}
 .flight-object .mini-object-large{transform:rotate(-90deg) scale(1.12)}
 @keyframes pencil-wipe{0%{left:-22%;top:50%;transform:translate(-50%,-50%) scale(.22) rotate(-12deg);opacity:0}18%{opacity:1}45%{left:50%;transform:translate(-50%,-50%) scale(1.22) rotate(0deg)}100%{left:122%;transform:translate(-50%,-50%) scale(1.08) rotate(0deg);opacity:1}}
-.hobby-gallery .gallery-back,.hobby-gallery .gallery-heading,.hobby-gallery .gallery-empty{opacity:0;animation:gallery-content-in .65s ease forwards;animation-delay:.88s}
+.hobby-gallery .gallery-back,.hobby-gallery .gallery-heading,.hobby-gallery .gallery-empty{opacity:0;animation:gallery-content-in .65s ease forwards;animation-delay:1.75s}
 @keyframes gallery-content-in{to{opacity:1}}
 .hobby-transition.arrived .hobby-gallery{clip-path:inset(0);animation:none}
 @media(max-width:760px){.flight-object{width:88vw;height:58vh}.gallery-object{height:240px}}
@@ -206,11 +206,11 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
    The transition is short, spatially clear, and user-triggered. */
 @media(prefers-reduced-motion:reduce){
   .hobby-transition .flight-stage{display:block!important}
-  .hobby-transition .flight-object{animation:pencil-wipe 1.38s cubic-bezier(.66,0,.24,1) forwards!important;animation-duration:1.38s!important}
-  .hobby-transition .hobby-gallery{animation:page-follow 1.38s cubic-bezier(.76,0,.22,1) forwards!important;animation-duration:1.38s!important}
+  .hobby-transition .flight-object{animation:pencil-wipe 2.8s cubic-bezier(.66,0,.24,1) forwards!important;animation-duration:2.8s!important}
+  .hobby-transition .hobby-gallery{animation:page-follow 2.8s cubic-bezier(.76,0,.22,1) forwards!important;animation-duration:2.8s!important}
   .hobby-transition .hobby-gallery .gallery-back,
   .hobby-transition .hobby-gallery .gallery-heading,
-  .hobby-transition .hobby-gallery .gallery-empty{animation:gallery-content-in .65s ease forwards!important;animation-delay:.88s!important;opacity:0}
+  .hobby-transition .hobby-gallery .gallery-empty{animation:gallery-content-in .65s ease forwards!important;animation-delay:1.75s!important;opacity:0}
 }
 .hobby-transition .flight-object .mini-object-large{width:100%;height:100%}
 .hobby-transition .flight-object .mini-object-large canvas{width:100%!important;height:100%!important;display:block}
