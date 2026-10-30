@@ -223,12 +223,12 @@ export function MiniObject({ type, size = 'small' }) {
     : type === 'guitar'
       ? <Guitar position={[0, -0.8, 0]} />
       : <Globe position={[0, 0, 0]} />
-  return <div className={`mini-object ${size === "large" ? "mini-object-large" : ""}`} aria-hidden="true">
-    <Canvas camera={{ position: [0, 0, size === "large" ? 6.2 : 4.2], fov: size === "large" ? 38 : 38 }} dpr={[1.5, 2]} gl={{ antialias: true, alpha: true }}>
+  return <div className={`mini-object ${size === "large" ? "mini-object-large" : size === "medium" ? "mini-object-medium" : ""}`} aria-hidden="true">
+    <Canvas camera={{ position: [0, 0, size === "large" ? 6.2 : size === "medium" ? 5.6 : 4.2], fov: 38 }} dpr={[1.5, 2]} gl={{ antialias: true, alpha: true }}>
       <ambientLight intensity={1.1} />
       <pointLight position={[3, 3, 4]} intensity={22} color="#e4d6ff" />
       <pointLight position={[-3, -2, 2]} intensity={12} color="#8c79c1" />
-      <Suspense fallback={null}><Environment preset="studio" />{size === "large" ? <group scale={1.95}>{object}</group> : object}</Suspense>
+      <Suspense fallback={null}><Environment preset="studio" />{size === "large" ? <group scale={1.95}>{object}</group> : size === "medium" ? <group scale={1.28}>{object}</group> : object}</Suspense>
     </Canvas>
   </div>
 }
