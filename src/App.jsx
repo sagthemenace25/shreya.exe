@@ -17,6 +17,14 @@ function ThemeToggle({ theme, setTheme }) {
 export default function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('shreya-theme') || 'dark')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeHobby, setActiveHobby] = useState(null)
+  const [galleryReady, setGalleryReady] = useState(false)
+  const openHobby = (hobby) => {
+    setActiveHobby(hobby)
+    setGalleryReady(false)
+    window.setTimeout(() => setGalleryReady(true), 1050)
+  }
+  const closeHobby = () => { setActiveHobby(null); setGalleryReady(false) }
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -26,6 +34,13 @@ export default function App() {
   const closeMenu = () => setMenuOpen(false)
 
   return <main>
+    {activeHobby && <div className={`hobby-transition ${galleryReady ? 'arrived' : 'in-flight'}`} role="dialog" aria-modal="true" aria-label={activeHobby.title}>
+      {!galleryReady ? <div className="flight-stage"><div className="flight-object"><MiniObject type={activeHobby.type} size="large" /></div><span className="flight-caption">ONE SEC. GRABBING THE GOOD STUFF...</span></div> : <div className="hobby-gallery">
+        <button className="gallery-back" onClick={closeHobby}>← BACK TO THE TABS</button>
+        <div className="gallery-heading"><div><p className="eyebrow">{activeHobby.eyebrow}</p><h2>{activeHobby.title}</h2><p>{activeHobby.description}</p></div><div className="gallery-object"><MiniObject type={activeHobby.type} size="large" /></div></div>
+        <div className="gallery-empty"><span>✳</span><h3>the good stuff goes here.</h3><p>This space is ready for photos, sketches, and little moments. I’ll add the collection as it grows.</p><small>COLLECTION LOADING · HUMAN CONTENT PENDING</small></div>
+      </div>}
+    </div>}
     <nav className="nav">
       <a className="wordmark" href="#home">shreya<span>.exe</span></a>
       <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
@@ -76,9 +91,9 @@ export default function App() {
     <section className="offscreen section" id="offscreen">
       <div className="section-kicker">03 / OUTSIDE THE TABS <span className="kicker-aside">TOUCHING GRASS (OCCASIONALLY) ↘</span></div>
       <div className="offscreen-layout"><h2>Plot twists<br /><span>happen offline too.</span></h2><div className="hobby-list">
-        <div><MiniObject type="pencil" /><span>01</span><h3>Sketching</h3><p>Making a mess on paper, but intentionally.</p></div>
-        <div><MiniObject type="guitar" /><span>02</span><h3>Guitar</h3><p>Learning strings, chords, and patience.</p></div>
-        <div><MiniObject type="globe" /><span>03</span><h3>MUNs</h3><p>Formal debates. Informal panic. Great experience.</p></div>
+        <button className="hobby-entry" onClick={() => openHobby({ type: 'pencil', title: 'Sketchbook', eyebrow: 'A COLLECTION OF LITTLE LINES', description: 'A place for sketches, unfinished ideas, and happy accidents.' })}><MiniObject type="pencil" /><span>01</span><h3>Sketching</h3><p>Making a mess on paper, but intentionally.</p><b className="hobby-open">OPEN THE SKETCHBOOK ↗</b></button>
+        <button className="hobby-entry" onClick={() => openHobby({ type: 'guitar', title: 'The guitar corner', eyebrow: 'STRINGS, SOUNDS & SIDE QUESTS', description: 'Practice notes, songs in progress, and the occasional questionable chord.' })}><MiniObject type="guitar" /><span>02</span><h3>Guitar</h3><p>Learning strings, chords, and patience.</p><b className="hobby-open">ENTER THE SOUND ROOM ↗</b></button>
+        <button className="hobby-entry" onClick={() => openHobby({ type: 'globe', title: 'MUN archive', eyebrow: 'COUNTRIES, CAUCUSES & CHAOS', description: 'A little archive for conferences, committees, and memories from the room.' })}><MiniObject type="globe" /><span>03</span><h3>MUNs</h3><p>Formal debates. Informal panic. Great experience.</p><b className="hobby-open">OPEN THE ARCHIVE ↗</b></button>
       </div></div>
       <div className="photo-placeholder"><div className="photo-symbol">✳</div><p>THE PHOTO DUMP GOES HERE</p><span>Sketches, guitar moments, MUN chaos & other evidence of life.</span></div>
     </section>
