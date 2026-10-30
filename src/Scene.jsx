@@ -14,7 +14,7 @@ function Pencil({ position }) {
   return (
     <Float speed={1.35} rotationIntensity={0.2} floatIntensity={0.55}>
       <group ref={ref} position={position} scale={0.72}>
-        <mesh position={[0, 0.48, 0]} rotation={[0, 0, Math.PI / 2]}>
+        <mesh position={[0, 0.48, 0]}>
           <cylinderGeometry args={[0.075, 0.075, 1.25, 12]} />
           <meshPhysicalMaterial color="#c9b7ec" metalness={0.72} roughness={0.22} clearcoat={1} />
         </mesh>
