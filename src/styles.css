@@ -128,3 +128,13 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
  .currently-grid>div:nth-child(n){transform:none}
 }
 @media(prefers-reduced-motion:reduce){.ticker-track,.orbit-sticker{animation:none!important}}
+
+/* little 3D companions beside the hobbies they represent */
+.hobby-list>div{position:relative;display:grid;grid-template-columns:92px 36px 1fr;grid-template-rows:auto auto;column-gap:14px;align-items:center;min-height:132px}
+.hobby-list>div>.mini-object{grid-column:1;grid-row:1 / span 2;width:92px;height:112px;overflow:visible}
+.hobby-list>div>span{grid-column:2;grid-row:1 / span 2;align-self:start;padding-top:9px}
+.hobby-list>div>h3{grid-column:3;grid-row:1;align-self:end}
+.hobby-list>div>p{grid-column:3;grid-row:2;align-self:start}
+.mini-object canvas{width:100%!important;height:100%!important;display:block}
+.hobby-list>div:hover .mini-object{filter:drop-shadow(0 0 18px color-mix(in srgb,var(--accent) 45%,transparent))}
+@media(max-width:760px){.hobby-list>div{grid-template-columns:70px 28px 1fr;min-height:110px}.hobby-list>div>.mini-object{width:70px;height:94px}}
