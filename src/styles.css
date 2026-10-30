@@ -260,3 +260,54 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
   }
 }
 @media(prefers-reduced-motion:reduce){.gallery-heading h2{animation:none;background-position:50% 50%}}
+
+
+/* Make the hobby-page typography read as polished chrome, not a faint lavender tint */
+.hobby-gallery .gallery-heading h2,
+.hobby-gallery .gallery-empty h3{
+  color:#f4f1fa;
+  background:linear-gradient(105deg,
+    #5f5c68 0%,
+    #d9d6e2 10%,
+    #ffffff 19%,
+    #777481 29%,
+    #f4f2fb 40%,
+    #aaa5b7 49%,
+    #ffffff 58%,
+    #777280 69%,
+    #e9e5f1 81%,
+    #ffffff 91%,
+    #696572 100%);
+  background-size:260% 100%;
+  background-position:0% 50%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 22px #d8c9f022;
+  animation:chrome-lettering 5s linear infinite;
+}
+.hobby-gallery .gallery-heading .eyebrow,
+.hobby-gallery .gallery-empty small{
+  color:#d8d3e2;
+  text-shadow:0 0 10px #d8c9f055;
+}
+.hobby-gallery .gallery-heading>div>p:last-child,
+.hobby-gallery .gallery-empty p{
+  color:#d0ccd7;
+  background:linear-gradient(100deg,#777481 0%,#e7e4ed 24%,#aaa5b4 48%,#f8f6fc 67%,#918c9d 86%,#dedbe6 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:chrome-lettering 8s ease-in-out infinite alternate;
+}
+@keyframes chrome-lettering{
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+@media(prefers-reduced-motion:reduce){
+  .hobby-gallery .gallery-heading h2,
+  .hobby-gallery .gallery-empty h3,
+  .hobby-gallery .gallery-heading>div>p:last-child,
+  .hobby-gallery .gallery-empty p{animation:none;background-position:50% 50%}
+}
