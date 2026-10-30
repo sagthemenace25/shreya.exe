@@ -48,18 +48,19 @@ function Guitar({ position }) {
   })
   return (
     <Float speed={1.1} rotationIntensity={0.18} floatIntensity={0.48}>
-      <group ref={ref} position={position} scale={0.57} rotation={[0, 0, 0]}>
-        <mesh position={[0, -0.35, 0]}>
-          <sphereGeometry args={[0.62, 40, 32]} />
-          <meshPhysicalMaterial color="#9b79bd" metalness={0.55} roughness={0.22} clearcoat={1} />
+      <group ref={ref} position={position} scale={0.52} rotation={[0, 0, 0]}>
+        {/* Sculpted double-cutaway body: two broad bouts joined by a narrow waist */}
+        <mesh position={[0, -0.34, 0]} scale={[1.08, 0.92, 0.58]}>
+          <sphereGeometry args={[0.62, 64, 48]} />
+          <meshPhysicalMaterial color="#9875bd" metalness={0.88} roughness={0.14} clearcoat={1} clearcoatRoughness={0.08} />
         </mesh>
-        <mesh position={[0, 0.1, 0.02]} scale={[0.78, 0.68, 0.72]}>
-          <sphereGeometry args={[0.55, 40, 32]} />
-          <meshPhysicalMaterial color="#c7a8df" metalness={0.48} roughness={0.2} clearcoat={1} />
+        <mesh position={[0, 0.28, 0.015]} scale={[0.88, 0.72, 0.55]}>
+          <sphereGeometry args={[0.55, 64, 48]} />
+          <meshPhysicalMaterial color="#c4a5e3" metalness={0.86} roughness={0.13} clearcoat={1} clearcoatRoughness={0.08} />
         </mesh>
-        <mesh position={[0, 0.52, 0.02]} scale={[0.48, 0.55, 0.72]}>
-          <sphereGeometry args={[0.48, 40, 32]} />
-          <meshPhysicalMaterial color="#b28dce" metalness={0.52} roughness={0.2} clearcoat={1} />
+        <mesh position={[0, -0.02, 0.025]} scale={[0.62, 0.58, 0.52]}>
+          <sphereGeometry args={[0.48, 48, 40]} />
+          <meshPhysicalMaterial color="#ad8acb" metalness={0.9} roughness={0.12} clearcoat={1} clearcoatRoughness={0.06} />
         </mesh>
         <mesh position={[0, 1.34, 0]} rotation={[0, 0, -0.08]}>
           <boxGeometry args={[0.16, 1.75, 0.13]} />
@@ -223,11 +224,11 @@ export function MiniObject({ type, size = 'small' }) {
       ? <Guitar position={[0, -0.8, 0]} />
       : <Globe position={[0, 0, 0]} />
   return <div className={`mini-object ${size === "large" ? "mini-object-large" : ""}`} aria-hidden="true">
-    <Canvas camera={{ position: [0, 0, size === "large" ? 5.8 : 4.2], fov: size === "large" ? 34 : 38 }} dpr={[1.5, 2]} gl={{ antialias: true, alpha: true }}>
+    <Canvas camera={{ position: [0, 0, size === "large" ? 6.2 : 4.2], fov: size === "large" ? 38 : 38 }} dpr={[1.5, 2]} gl={{ antialias: true, alpha: true }}>
       <ambientLight intensity={1.1} />
       <pointLight position={[3, 3, 4]} intensity={22} color="#e4d6ff" />
       <pointLight position={[-3, -2, 2]} intensity={12} color="#8c79c1" />
-      <Suspense fallback={null}><Environment preset="studio" />{size === "large" ? <group scale={2.35}>{object}</group> : object}</Suspense>
+      <Suspense fallback={null}><Environment preset="studio" />{size === "large" ? <group scale={1.95}>{object}</group> : object}</Suspense>
     </Canvas>
   </div>
 }
