@@ -216,6 +216,22 @@ function ParticleField() {
   </points>
 }
 
+export function MiniObject({ type }) {
+  const object = type === 'pencil'
+    ? <Pencil position={[0, -0.45, 0]} />
+    : type === 'guitar'
+      ? <Guitar position={[0, -0.8, 0]} />
+      : <Globe position={[0, 0, 0]} />
+  return <div className="mini-object" aria-hidden="true">
+    <Canvas camera={{ position: [0, 0, 4.2], fov: 38 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
+      <ambientLight intensity={1.1} />
+      <pointLight position={[3, 3, 4]} intensity={22} color="#e4d6ff" />
+      <pointLight position={[-3, -2, 2]} intensity={12} color="#8c79c1" />
+      <Suspense fallback={null}>{object}</Suspense>
+    </Canvas>
+  </div>
+}
+
 export default function Scene() {
   return (
     <div className="scene-wrap" aria-label="An animated lavender liquid-metal sculpture with a floating pencil, guitar and globe">
