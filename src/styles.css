@@ -138,3 +138,31 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
 .mini-object canvas{width:100%!important;height:100%!important;display:block}
 .hobby-list>div:hover .mini-object{filter:drop-shadow(0 0 18px color-mix(in srgb,var(--accent) 45%,transparent))}
 @media(max-width:760px){.hobby-list>div{grid-template-columns:70px 28px 1fr;min-height:110px}.hobby-list>div>.mini-object{width:70px;height:94px}}
+
+
+/* Oversized metallic object -> dedicated hobby archive transition */
+.hobby-list .hobby-entry{appearance:none;text-align:left;color:inherit;font:inherit;width:100%;cursor:pointer;background:transparent}
+.hobby-list .hobby-entry:focus-visible{outline:1px solid var(--accent);outline-offset:5px}
+.hobby-open{grid-column:3;grid-row:3;align-self:start;color:var(--accent);font:9px var(--mono);letter-spacing:.08em;opacity:0;transform:translateY(5px);transition:all .25s}
+.hobby-entry:hover .hobby-open,.hobby-entry:focus-visible .hobby-open{opacity:1;transform:translateY(0)}
+.hobby-entry:hover>.mini-object{transform:scale(1.12) rotate(-5deg);transition:transform .35s}
+.hobby-transition{position:fixed;inset:0;z-index:1000;background:#151419;color:#eae7ef;overflow:auto}
+.flight-stage{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 50%,#55456f 0%,#211d29 38%,#151419 72%)}
+.flight-object{width:min(56vw,560px);height:min(75vh,650px);animation:metallic-swoop 1.05s cubic-bezier(.18,.72,.22,1) both;filter:drop-shadow(0 0 65px #b9a9df88)}
+.flight-caption{position:absolute;bottom:10%;font:10px var(--mono);letter-spacing:.18em;color:#c6bfd4;animation:caption-in .5s .15s both}
+@keyframes metallic-swoop{0%{transform:translate(-5vw,20vh) scale(.18) rotate(-38deg);opacity:0}35%{opacity:1}72%{transform:translate(8vw,-3vh) scale(1.22) rotate(18deg)}100%{transform:translate(48vw,-65vh) scale(.24) rotate(68deg);opacity:0}}
+@keyframes caption-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.hobby-gallery{min-height:100vh;padding:7vh 9vw 9vh;animation:gallery-reveal .65s cubic-bezier(.2,.8,.2,1) both;background:radial-gradient(ellipse at 82% 18%,#76618c44,transparent 38%),#151419}
+@keyframes gallery-reveal{from{opacity:0;transform:translateY(24px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+.gallery-back{border:1px solid #ffffff28;background:#ffffff08;color:#c6bfd4;padding:12px 16px;border-radius:99px;font:9px var(--mono);letter-spacing:.1em;cursor:pointer}
+.gallery-heading{display:grid;grid-template-columns:1fr .8fr;align-items:center;gap:4vw;min-height:42vh;padding:5vh 0}
+.gallery-heading .eyebrow{color:#a99acb;font:10px var(--mono);letter-spacing:.15em}
+.gallery-heading h2{font:500 clamp(48px,8vw,104px)/.95 var(--display);letter-spacing:-.08em;margin:18px 0}
+.gallery-heading>div>p:last-child{color:#a39eaa;max-width:430px;line-height:1.7}
+.gallery-object{height:360px;filter:drop-shadow(0 0 45px #a99acb66)}
+.gallery-empty{min-height:270px;border:1px solid #ffffff25;background:linear-gradient(135deg,#ffffff0b,#ffffff02);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:35px;position:relative;overflow:hidden}
+.gallery-empty:before{content:"";position:absolute;inset:12px;border:1px solid #ffffff12;pointer-events:none}
+.gallery-empty>span{font-size:38px;color:#a99acb}.gallery-empty h3{font:500 27px var(--display);margin:15px 0 8px}.gallery-empty p{color:#a39eaa;max-width:440px;line-height:1.7;font-size:13px}.gallery-empty small{font:9px var(--mono);letter-spacing:.12em;color:#a99acb;margin-top:22px}
+.mini-object-large{width:100%;height:100%}
+@media(max-width:760px){.hobby-open{opacity:1;grid-column:3;grid-row:3}.flight-object{width:90vw;height:60vh}.hobby-gallery{padding:5vh 7vw}.gallery-heading{grid-template-columns:1fr;gap:0;padding:4vh 0}.gallery-object{height:240px;order:-1}.gallery-heading h2{font-size:clamp(48px,14vw,76px)}}
+@media(prefers-reduced-motion:reduce){.flight-object{animation:none;opacity:1}.hobby-transition.in-flight .flight-caption{display:none}.hobby-gallery{animation:none}}
