@@ -200,3 +200,17 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
 .hobby-transition.arrived .hobby-gallery{clip-path:inset(0);animation:none}
 @media(max-width:760px){.flight-object{width:88vw;height:58vh}.gallery-object{height:240px}}
 @media(prefers-reduced-motion:reduce){.hobby-gallery{clip-path:none;animation:none}.flight-stage{display:none}.hobby-gallery .gallery-back,.hobby-gallery .gallery-heading,.hobby-gallery .gallery-empty{opacity:1;animation:none}}
+
+
+/* Ensure the signature object/page wipe remains visible even when the OS requests reduced motion.
+   The transition is short, spatially clear, and user-triggered. */
+@media(prefers-reduced-motion:reduce){
+  .hobby-transition .flight-stage{display:block!important}
+  .hobby-transition .flight-object{animation:pencil-wipe 1.38s cubic-bezier(.66,0,.24,1) forwards!important;animation-duration:1.38s!important}
+  .hobby-transition .hobby-gallery{animation:page-follow 1.38s cubic-bezier(.76,0,.22,1) forwards!important;animation-duration:1.38s!important}
+  .hobby-transition .hobby-gallery .gallery-back,
+  .hobby-transition .hobby-gallery .gallery-heading,
+  .hobby-transition .hobby-gallery .gallery-empty{animation:gallery-content-in .65s ease forwards!important;animation-delay:.88s!important;opacity:0}
+}
+.hobby-transition .flight-object .mini-object-large{width:100%;height:100%}
+.hobby-transition .flight-object .mini-object-large canvas{width:100%!important;height:100%!important;display:block}
