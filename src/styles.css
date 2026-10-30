@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Titan+One&display=swap');
 
 :root{font-family:'DM Sans',sans-serif;color-scheme:dark;--bg:#151419;--surface:#25232c;--text:#eae7ef;--muted:#a39eaa;--accent:#a99acb;--accent2:#c6bfd4;--line:rgba(234,231,239,.13);--mono:'DM Mono',monospace;--display:'Space Grotesk',sans-serif}
 :root[data-theme="light"]{color-scheme:light;--bg:#f3f0e8;--surface:#e9e4ed;--text:#24212a;--muted:#716b78;--accent:#796b9c;--accent2:#62557f;--line:rgba(36,33,42,.16)}
@@ -352,3 +352,44 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
   .hero h1 em{font-size:1.02em;letter-spacing:-.04em}
 }
 @media(prefers-reduced-motion:reduce){.hero h1 em{animation:none}}
+
+
+/* Liquid-chrome bubble lettering inspired by the supplied alphabet specimen */
+.hero h1 em{
+  display:inline-block;
+  font-family:'Titan One', 'Arial Rounded MT Bold', sans-serif;
+  font-size:1.04em;
+  font-weight:400;
+  font-style:normal;
+  letter-spacing:-.045em;
+  line-height:1;
+  padding:.015em .06em .12em 0;
+  color:#f8f7fb;
+  background:linear-gradient(180deg,
+    #ffffff 0%,#b9b8c0 7%,#fff 14%,#686873 22%,
+    #f5f4f8 31%,#8e8d99 39%,#fff 47%,
+    #5d5c68 55%,#f1f0f5 64%,#a6a4b1 73%,
+    #fff 82%,#777581 91%,#e8e7ed 100%);
+  background-size:100% 240%;
+  background-position:50% 0%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:1.15px #e9e8f0;
+  filter:
+    drop-shadow(0 2px 0 #aaa8b5)
+    drop-shadow(0 4px 0 #777581)
+    drop-shadow(0 7px 0 #44434e)
+    drop-shadow(0 12px 12px #0009)
+    drop-shadow(0 0 20px #d8d1ee44);
+  text-shadow:0 -2px 2px #fff;
+  animation:liquid-chrome-roll 6s ease-in-out infinite alternate;
+}
+@keyframes liquid-chrome-roll{
+  0%{background-position:50% 0%}
+  100%{background-position:50% 100%}
+}
+@media(max-width:760px){
+ .hero h1 em{font-size:1.02em;letter-spacing:-.055em;-webkit-text-stroke:.75px #e9e8f0}
+}
+@media(prefers-reduced-motion:reduce){.hero h1 em{animation:none;background-position:50% 50%}}
