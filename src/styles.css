@@ -148,12 +148,12 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
 .hobby-entry:hover>.mini-object{transform:scale(1.12) rotate(-5deg);transition:transform .35s}
 .hobby-transition{position:fixed;inset:0;z-index:1000;background:#151419;color:#eae7ef;overflow:auto}
 .flight-stage{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 50%,#55456f 0%,#211d29 38%,#151419 72%)}
-.flight-object{width:min(56vw,560px);height:min(75vh,650px);animation:metallic-swoop 1.05s cubic-bezier(.18,.72,.22,1) both;filter:drop-shadow(0 0 65px #b9a9df88)}
+.flight-object{width:min(56vw,560px);height:min(75vh,650px);animation:metallic-swoop 1.05s cubic-bezier(.18,.72,.22,1) both;filter:drop-shadow(0 0 28px #b9a9df66)}
 .flight-caption{position:absolute;bottom:10%;font:10px var(--mono);letter-spacing:.18em;color:#c6bfd4;animation:caption-in .5s .15s both}
 @keyframes metallic-swoop{0%{transform:translate(-5vw,20vh) scale(.18) rotate(-38deg);opacity:0}35%{opacity:1}72%{transform:translate(8vw,-3vh) scale(1.22) rotate(18deg)}100%{transform:translate(48vw,-65vh) scale(.24) rotate(68deg);opacity:0}}
 @keyframes caption-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .hobby-gallery{min-height:100vh;padding:7vh 9vw 9vh;animation:gallery-reveal .65s cubic-bezier(.2,.8,.2,1) both;background:radial-gradient(ellipse at 82% 18%,#76618c44,transparent 38%),#151419}
-@keyframes gallery-reveal{from{opacity:0;transform:translateY(24px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes gallery-reveal{from{opacity:0;transform:translateY(24px);filter:blur(0px)}to{opacity:1;transform:none;filter:blur(0)}}
 .gallery-back{border:1px solid #ffffff28;background:#ffffff08;color:#c6bfd4;padding:12px 16px;border-radius:99px;font:9px var(--mono);letter-spacing:.1em;cursor:pointer}
 .gallery-heading{display:grid;grid-template-columns:1fr .8fr;align-items:center;gap:4vw;min-height:42vh;padding:5vh 0}
 .gallery-heading .eyebrow{color:#a99acb;font:10px var(--mono);letter-spacing:.15em}
@@ -192,8 +192,8 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
 .hobby-gallery{position:absolute;inset:0;z-index:0;overflow:auto;clip-path:inset(0 100% 0 0);animation:page-follow 2.8s cubic-bezier(.76,0,.22,1) forwards;animation-delay:.02s}
 @keyframes page-follow{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
 .flight-stage{position:absolute;inset:0;z-index:2;pointer-events:none;background:transparent;display:block}
-.flight-object{position:absolute;left:50%;top:50%;width:min(48vw,570px);height:min(76vh,680px);transform:translate(-50%,-50%);animation:pencil-wipe 2.8s cubic-bezier(.66,0,.24,1) forwards;filter:drop-shadow(0 0 40px #c5b3f5aa) drop-shadow(0 18px 35px #0009)}
-.flight-object .mini-object-large{transform:rotate(-90deg) scale(1.12)}
+.flight-object{position:absolute;left:50%;top:50%;width:min(48vw,570px);height:min(76vh,680px);transform:translate(-50%,-50%);animation:pencil-wipe 2.8s cubic-bezier(.66,0,.24,1) forwards;filter:drop-shadow(0 0 22px #c5b3f566) drop-shadow(0 12px 22px #0008)}
+.flight-object .mini-object-large{transform:scale(1.12)}
 @keyframes pencil-wipe{0%{left:-22%;top:50%;transform:translate(-50%,-50%) scale(.22) rotate(-12deg);opacity:0}18%{opacity:1}45%{left:50%;transform:translate(-50%,-50%) scale(1.22) rotate(0deg)}100%{left:122%;transform:translate(-50%,-50%) scale(1.08) rotate(0deg);opacity:1}}
 .hobby-gallery .gallery-back,.hobby-gallery .gallery-heading,.hobby-gallery .gallery-empty{opacity:0;animation:gallery-content-in .65s ease forwards;animation-delay:1.75s}
 @keyframes gallery-content-in{to{opacity:1}}
