@@ -37,7 +37,7 @@ export default function App() {
     {activeHobby && <div className={`hobby-transition ${galleryReady ? 'arrived' : 'in-flight'}`} role="dialog" aria-modal="true" aria-label={activeHobby.title}>
       <div className="hobby-gallery">
         <button className="gallery-back" onClick={closeHobby}>← BACK TO THE TABS</button>
-        <div className="gallery-heading"><div><p className="eyebrow">{activeHobby.eyebrow}</p><h2>{activeHobby.title}</h2><p>{activeHobby.description}</p></div><div className="gallery-object"><MiniObject type={activeHobby.type} size="large" /></div></div>
+        <div className="gallery-heading"><div><p className="eyebrow">{activeHobby.eyebrow}</p><h2>{activeHobby.title}</h2><p>{activeHobby.description}</p></div><div className="gallery-object"><MiniObject type={activeHobby.type} size="medium" /></div></div>
         <div className="gallery-empty"><span>✳</span><h3>the good stuff goes here.</h3><p>This space is ready for photos, sketches, and little moments. I’ll add the collection as it grows.</p><small>COLLECTION LOADING · HUMAN CONTENT PENDING</small></div>
       </div>
       {!galleryReady && <div className="flight-stage"><div className="flight-object"><MiniObject type={activeHobby.type} size="large" /></div></div>}
