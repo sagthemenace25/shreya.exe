@@ -49,10 +49,12 @@ export default function App() {
       <div className="hero-index">01 <i /> 07</div>
     </section>
 
+    <div className="ticker" aria-label="A little bit of everything"><div className="ticker-track">{Array.from({length:4},(_,i)=><span key={i}>CURIOUS BY DEFAULT <b>✳</b> BUILDING THINGS <b>✳</b> COLLECTING SIDE QUESTS <b>✳</b> TOO MANY TABS OPEN <b>✳</b> FIGURING IT OUT AS I GO <b>✳</b></span>)}</div></div>
+
     <section className="intro section" id="about">
-      <div className="section-kicker">01 / A BIT ABOUT ME</div>
+      <div className="section-kicker">01 / A BIT ABOUT ME <span className="kicker-aside">THE HUMAN BEHIND THE PIXELS ↘</span></div>
       <div className="intro-content">
-        <h2>Curious by default.<br /><span>Distractible by design.</span></h2>
+        <div className="about-headline"><h2>Curious by default.<br /><span>Distractible by design.</span></h2><span className="orbit-sticker">✳<small>100%<br/> HUMAN</small></span></div>
         <div className="intro-text">
           <p>Hey! I'm Shreya. I like figuring out how things work, making things on the internet, and occasionally getting very invested in a completely unrelated new interest.</p>
           <p>This is my little corner to collect the things I'm building, learning, making, and doing when I'm supposed to be doing something else.</p>
@@ -62,7 +64,7 @@ export default function App() {
     </section>
 
     <section className="projects section" id="projects">
-      <div className="section-kicker">02 / THINGS I'VE MADE</div>
+      <div className="section-kicker">02 / THINGS I'VE MADE <span className="kicker-aside">A FEW OPEN TABS MADE REAL ↘</span></div>
       <div className="section-heading"><h2>Some things<br /><span>escaped my drafts.</span></h2><p>A small collection of projects, experiments<br />and ideas that made it out of my notes app.</p></div>
       <div className="project-grid">
         <article className="project-card featured"><div className="project-art art-one"><span className="art-orbit orbit-a" /><span className="art-orbit orbit-b" /><span className="art-core" /></div><div className="project-meta"><span>01 — IN PROGRESS</span><span>CYBERSECURITY / AI</span></div><h3>Betonus</h3><p>An early-stage idea exploring AI-assisted security operations. More soon.</p><span className="coming-soon">CASE STUDY COMING SOON ↗</span></article>
@@ -72,7 +74,7 @@ export default function App() {
     </section>
 
     <section className="offscreen section" id="offscreen">
-      <div className="section-kicker">03 / OUTSIDE THE TABS</div>
+      <div className="section-kicker">03 / OUTSIDE THE TABS <span className="kicker-aside">TOUCHING GRASS (OCCASIONALLY) ↘</span></div>
       <div className="offscreen-layout"><h2>Plot twists<br /><span>happen offline too.</span></h2><div className="hobby-list">
         <div><span>01</span><h3>Sketching</h3><p>Making a mess on paper, but intentionally.</p></div>
         <div><span>02</span><h3>Guitar</h3><p>Learning strings, chords, and patience.</p></div>
@@ -82,7 +84,7 @@ export default function App() {
     </section>
 
     <section className="timeline section" id="timeline">
-      <div className="section-kicker">04 / THE LORE SO FAR</div>
+      <div className="section-kicker">04 / THE LORE SO FAR <span className="kicker-aside">LOADING BACKSTORY... ↘</span></div>
       <div className="timeline-layout">
         <h2>A work<br /><span>in progress.</span></h2>
         <div className="timeline-list">
@@ -94,13 +96,13 @@ export default function App() {
     </section>
 
     <section className="currently section">
-      <div className="section-kicker">05 / CURRENTLY</div>
+      <div className="section-kicker">05 / CURRENTLY <span className="kicker-aside">LIVE FROM THE BRAIN ↘</span></div>
       <h2>Open tabs<br /><span>in my brain.</span></h2>
       <div className="currently-grid"><div><small>LEARNING</small><p>Cybersecurity, code, and how to make 3D things do cool stuff.</p></div><div><small>EXPLORING</small><p>New ideas, new tools, and whatever rabbit hole appears next.</p></div><div><small>STATUS</small><p><span className="status-dot" /> Building things. Probably overthinking one.</p></div></div>
     </section>
 
     <footer className="footer section" id="contact">
-      <div className="section-kicker">06 / FIND ME ELSEWHERE</div>
+      <div className="section-kicker">06 / FIND ME ELSEWHERE <span className="kicker-aside">SEND A DIGITAL PIGEON ↘</span></div>
       <h2>the internet<br /><span>is a small place.</span></h2>
       <div className="footer-bottom"><p>Have a project, a question, or a very niche recommendation?</p><div className="socials">{links.map(link => <a key={link.label} href={link.href} target="_blank" rel="noreferrer">{link.label} <ArrowUpRight size={14} /></a>)}</div><span className="copyright">© 2026 SHREYA · MADE WITH TOO MANY TABS OPEN</span></div>
     </footer>
