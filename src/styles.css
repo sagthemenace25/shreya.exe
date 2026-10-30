@@ -166,3 +166,37 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
 .mini-object-large{width:100%;height:100%}
 @media(max-width:760px){.hobby-open{opacity:1;grid-column:3;grid-row:3}.flight-object{width:90vw;height:60vh}.hobby-gallery{padding:5vh 7vw}.gallery-heading{grid-template-columns:1fr;gap:0;padding:4vh 0}.gallery-object{height:240px;order:-1}.gallery-heading h2{font-size:clamp(48px,14vw,76px)}}
 @media(prefers-reduced-motion:reduce){.flight-object{animation:none;opacity:1}.hobby-transition.in-flight .flight-caption{display:none}.hobby-gallery{animation:none}}
+
+
+/* Recompose the offscreen hobbies as three distinct editorial object cards */
+.hobby-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.hobby-list .hobby-entry{position:relative;display:grid;grid-template-columns:1fr;grid-template-rows:190px auto auto auto;gap:9px;align-content:start;min-width:0;min-height:330px;padding:16px;border:1px solid var(--line);border-radius:3px 26px 3px 3px;background:linear-gradient(145deg,color-mix(in srgb,var(--surface) 88%,var(--accent)),color-mix(in srgb,var(--bg) 85%,transparent));overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.hobby-list .hobby-entry:nth-child(2){transform:translateY(26px) rotate(1deg);border-radius:26px 3px 3px 3px}
+.hobby-list .hobby-entry:nth-child(3){transform:translateY(-9px) rotate(-1deg);border-radius:3px 3px 26px 3px}
+.hobby-list .hobby-entry:hover{transform:translateY(-10px) rotate(0);border-color:color-mix(in srgb,var(--accent) 65%,var(--line));box-shadow:0 25px 60px #0003}
+.hobby-list .hobby-entry>.mini-object{grid-column:1;grid-row:1;width:100%;height:190px;overflow:visible;filter:drop-shadow(0 12px 22px color-mix(in srgb,var(--accent) 24%,transparent));transition:transform .4s,filter .4s}
+.hobby-list .hobby-entry:hover>.mini-object{transform:scale(1.15) rotate(-5deg);filter:drop-shadow(0 0 28px #bba7eaaa)}
+.hobby-list .hobby-entry>span{grid-column:1;grid-row:2;font:10px var(--mono);color:var(--accent);padding:0}
+.hobby-list .hobby-entry>h3{grid-column:1;grid-row:3;font:500 25px var(--display);margin:0}
+.hobby-list .hobby-entry>p{grid-column:1;grid-row:4;color:var(--muted);font-size:12px;line-height:1.6;margin:0}
+.hobby-list .hobby-entry .hobby-open{grid-column:1;grid-row:5;opacity:1;transform:none;margin-top:12px}
+.hobby-list .hobby-entry:after{content:"↗";position:absolute;right:17px;top:15px;color:var(--accent);font:16px var(--mono);opacity:.8}
+.hobby-list>div{display:none}
+.offscreen-layout{grid-template-columns:.78fr 1.22fr;gap:6vw}
+.offscreen-layout>h2{font-size:clamp(48px,6.3vw,88px)}
+@media(max-width:900px){.hobby-list{grid-template-columns:repeat(2,minmax(0,1fr))}.hobby-list .hobby-entry:nth-child(3){transform:translateX(50%) rotate(-1deg)}.offscreen-layout{grid-template-columns:1fr;gap:42px}}
+@media(max-width:600px){.hobby-list{grid-template-columns:1fr;gap:14px}.hobby-list .hobby-entry,.hobby-list .hobby-entry:nth-child(2),.hobby-list .hobby-entry:nth-child(3){transform:none;min-height:290px;grid-template-rows:155px auto auto auto}.hobby-list .hobby-entry>.mini-object{height:155px}.hobby-list .hobby-entry:hover{transform:translateY(-4px)}}
+
+/* The object is the seam: it travels sideways while the new page is pulled in behind it */
+.hobby-transition{isolation:isolate;background:#151419}
+.hobby-gallery{position:absolute;inset:0;z-index:0;overflow:auto;clip-path:inset(0 100% 0 0);animation:page-follow 1.38s cubic-bezier(.76,0,.22,1) forwards;animation-delay:.02s}
+@keyframes page-follow{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
+.flight-stage{position:absolute;inset:0;z-index:2;pointer-events:none;background:transparent;display:block}
+.flight-object{position:absolute;left:50%;top:50%;width:min(48vw,570px);height:min(76vh,680px);transform:translate(-50%,-50%);animation:pencil-wipe 1.38s cubic-bezier(.66,0,.24,1) forwards;filter:drop-shadow(0 0 40px #c5b3f5aa) drop-shadow(0 18px 35px #0009)}
+.flight-object .mini-object-large{transform:rotate(-90deg) scale(1.12)}
+@keyframes pencil-wipe{0%{left:-22%;top:50%;transform:translate(-50%,-50%) scale(.22) rotate(-12deg);opacity:0}18%{opacity:1}45%{left:50%;transform:translate(-50%,-50%) scale(1.22) rotate(0deg)}100%{left:122%;transform:translate(-50%,-50%) scale(1.08) rotate(0deg);opacity:1}}
+.hobby-gallery .gallery-back,.hobby-gallery .gallery-heading,.hobby-gallery .gallery-empty{opacity:0;animation:gallery-content-in .65s ease forwards;animation-delay:.88s}
+@keyframes gallery-content-in{to{opacity:1}}
+.hobby-transition.arrived .hobby-gallery{clip-path:inset(0);animation:none}
+@media(max-width:760px){.flight-object{width:88vw;height:58vh}.gallery-object{height:240px}}
+@media(prefers-reduced-motion:reduce){.hobby-gallery{clip-path:none;animation:none}.flight-stage{display:none}.hobby-gallery .gallery-back,.hobby-gallery .gallery-heading,.hobby-gallery .gallery-empty{opacity:1;animation:none}}
