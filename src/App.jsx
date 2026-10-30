@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowDown, ArrowUpRight, Sun, Moon, Menu, X } from 'lucide-react'
-import Scene from './Scene'
+import Scene, { MiniObject } from './Scene'
 
 const links = [
   { label: 'github', href: 'https://github.com/sagthemenace25' },
@@ -76,9 +76,9 @@ export default function App() {
     <section className="offscreen section" id="offscreen">
       <div className="section-kicker">03 / OUTSIDE THE TABS <span className="kicker-aside">TOUCHING GRASS (OCCASIONALLY) ↘</span></div>
       <div className="offscreen-layout"><h2>Plot twists<br /><span>happen offline too.</span></h2><div className="hobby-list">
-        <div><span>01</span><h3>Sketching</h3><p>Making a mess on paper, but intentionally.</p></div>
-        <div><span>02</span><h3>Guitar</h3><p>Learning strings, chords, and patience.</p></div>
-        <div><span>03</span><h3>MUNs</h3><p>Formal debates. Informal panic. Great experience.</p></div>
+        <div><MiniObject type="pencil" /><span>01</span><h3>Sketching</h3><p>Making a mess on paper, but intentionally.</p></div>
+        <div><MiniObject type="guitar" /><span>02</span><h3>Guitar</h3><p>Learning strings, chords, and patience.</p></div>
+        <div><MiniObject type="globe" /><span>03</span><h3>MUNs</h3><p>Formal debates. Informal panic. Great experience.</p></div>
       </div></div>
       <div className="photo-placeholder"><div className="photo-symbol">✳</div><p>THE PHOTO DUMP GOES HERE</p><span>Sketches, guitar moments, MUN chaos & other evidence of life.</span></div>
     </section>
