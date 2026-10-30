@@ -7,7 +7,7 @@ function Pencil({ position }) {
   const ref = useRef()
   useFrame((state, delta) => {
     if (ref.current) {
-      ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.55) * 0.12 - 0.48
+      ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.55) * 0.015
       ref.current.rotation.y += delta * 0.12
     }
   })
@@ -43,12 +43,12 @@ function Guitar({ position }) {
   const ref = useRef()
   useFrame((state, delta) => {
     if (!ref.current) return
-    ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.42) * 0.08 + 0.2
+    ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.42) * 0.015
     ref.current.rotation.y += delta * 0.08
   })
   return (
     <Float speed={1.1} rotationIntensity={0.18} floatIntensity={0.48}>
-      <group ref={ref} position={position} scale={0.57} rotation={[0.15, 0.1, 0.25]}>
+      <group ref={ref} position={position} scale={0.57} rotation={[0, 0, 0]}>
         <mesh position={[0, -0.35, 0]}>
           <sphereGeometry args={[0.62, 40, 32]} />
           <meshPhysicalMaterial color="#9b79bd" metalness={0.55} roughness={0.22} clearcoat={1} />
@@ -223,7 +223,7 @@ export function MiniObject({ type, size = 'small' }) {
       ? <Guitar position={[0, -0.8, 0]} />
       : <Globe position={[0, 0, 0]} />
   return <div className={`mini-object ${size === "large" ? "mini-object-large" : ""}`} aria-hidden="true">
-    <Canvas camera={{ position: [0, 0, size === "large" ? 5.8 : 4.2], fov: size === "large" ? 34 : 38 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
+    <Canvas camera={{ position: [0, 0, size === "large" ? 5.8 : 4.2], fov: size === "large" ? 34 : 38 }} dpr={[1.5, 2]} gl={{ antialias: true, alpha: true }}>
       <ambientLight intensity={1.1} />
       <pointLight position={[3, 3, 4]} intensity={22} color="#e4d6ff" />
       <pointLight position={[-3, -2, 2]} intensity={12} color="#8c79c1" />
@@ -235,7 +235,7 @@ export function MiniObject({ type, size = 'small' }) {
 export default function Scene() {
   return (
     <div className="scene-wrap" aria-label="An animated lavender liquid-metal sculpture with a floating pencil, guitar and globe">
-      <Canvas camera={{ position: [0, 0, 6.2], fov: 42 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }} performance={{ min: 0.55 }}>
+      <Canvas camera={{ position: [0, 0, 6.2], fov: 42 }} dpr={[1.5, 2]} gl={{ antialias: true, alpha: true }} performance={{ min: 0.55 }}>
         <ambientLight intensity={0.75} />
         <pointLight position={[4, 3, 4]} intensity={32} color="#e4d6ff" />
         <pointLight position={[-4, -2, 1]} intensity={22} color="#8c79c1" />
