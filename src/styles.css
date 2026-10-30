@@ -407,3 +407,70 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
  .hero h1 em{font-size:1.02em;letter-spacing:-.055em;-webkit-text-stroke:.9px #777985}
 }
 @media(prefers-reduced-motion:reduce){.hero h1 em{animation:none;background-position:50% 50%}}
+
+
+/* HERO WORDMARK — inflated liquid chrome, with visible mirror bands */
+.hero h1 em{
+  position:relative;
+  isolation:isolate;
+  font-family:'Titan One','Arial Rounded MT Bold',sans-serif;
+  font-weight:400;
+  letter-spacing:-.052em;
+  line-height:1;
+  color:#c8c8d0;
+  background:
+    linear-gradient(180deg,
+      #343540 0%,
+      #fdfdff 5%,
+      #b9bac4 10%,
+      #555762 15%,
+      #f7f7fb 21%,
+      #ffffff 27%,
+      #666873 33%,
+      #252630 40%,
+      #d7d8e0 47%,
+      #ffffff 53%,
+      #92939e 59%,
+      #343540 66%,
+      #f8f8fc 73%,
+      #c2c3cd 80%,
+      #555762 87%,
+      #fdfdff 94%,
+      #777985 100%);
+  background-size:100% 100%;
+  background-position:center;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:1.35px #777985;
+  filter:
+    drop-shadow(0 -1px 0 #fff)
+    drop-shadow(0 2px 0 #bfc0ca)
+    drop-shadow(0 4px 0 #666873)
+    drop-shadow(0 7px 0 #292a34)
+    drop-shadow(0 12px 13px #000c)
+    drop-shadow(0 0 20px #c9c3e344);
+  text-shadow:0 1px 1px #fff,0 -1px 1px #fff;
+  animation:hero-liquid-reflection 6s ease-in-out infinite alternate;
+}
+.hero h1 em::before{
+  content:"shreya.";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  color:#343540;
+  -webkit-text-fill-color:#343540;
+  -webkit-text-stroke:1px #171821;
+  transform:translateY(.075em);
+  filter:blur(.15px);
+}
+@keyframes hero-liquid-reflection{
+  0%{background-position:50% 0%}
+  100%{background-position:50% 100%}
+}
+@media(max-width:760px){
+  .hero h1 em{-webkit-text-stroke:1px #777985}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero h1 em{animation:none}
+}
