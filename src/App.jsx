@@ -49,7 +49,7 @@ export default function App() {
       <div className="hero-index">01 <i /> 07</div>
     </section>
 
-    <div className="ticker" aria-label="A little bit of everything"><div className="ticker-track">{Array.from({length:4},(_,i)=><span key={i}>CURIOUS BY DEFAULT <b>✳</b> BUILDING THINGS <b>✳</b> COLLECTING SIDE QUESTS <b>✳</b> TOO MANY TABS OPEN <b>✳</b> FIGURING IT OUT AS I GO <b>✳</b></span>)}</div></div>
+    <div className="ticker" aria-label="A little bit of everything"><div className="ticker-track">{Array.from({length:4},(_,i)=><span key={i}>idk bro <b>✳</b> prolly had sleepy owl hazelnut and slept <b>✳</b> wanna be nonchalant but i ask chatgpt if it’ll feel bad if i use claude <b>✳</b> boat is the goat (can) <b>✳</b></span>)}</div></div>
 
     <section className="intro section" id="about">
       <div className="section-kicker">01 / A BIT ABOUT ME <span className="kicker-aside">THE HUMAN BEHIND THE PIXELS ↘</span></div>
