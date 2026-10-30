@@ -311,3 +311,44 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
   .hobby-gallery .gallery-heading>div>p:last-child,
   .hobby-gallery .gallery-empty p{animation:none;background-position:50% 50%}
 }
+
+
+/* Bubble-chrome signature lettering for the hero name */
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
+.hero h1 em{
+  display:inline-block;
+  font-family:'Bagel Fat One', 'Arial Rounded MT Bold', sans-serif;
+  font-size:1.08em;
+  font-weight:400;
+  font-style:normal;
+  letter-spacing:-.035em;
+  line-height:.98;
+  padding:.025em .055em .09em 0;
+  background:linear-gradient(180deg,
+    #ffffff 0%,
+    #e9e7f1 13%,
+    #aaa6b8 25%,
+    #faf9ff 37%,
+    #8d899c 51%,
+    #f4f1fb 64%,
+    #b8b2c6 77%,
+    #ffffff 91%,
+    #777283 100%);
+  background-size:100% 220%;
+  background-position:50% 0%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  -webkit-text-stroke:1px #eeeaf8;
+  filter:drop-shadow(0 3px 0 #777184) drop-shadow(0 8px 0 #484453) drop-shadow(0 14px 22px #0008) drop-shadow(0 0 22px #c9b8f044);
+  text-shadow:0 -2px 1px #fff;
+  animation:bubble-chrome-glint 5.5s ease-in-out infinite alternate;
+}
+@keyframes bubble-chrome-glint{
+  from{background-position:50% 0%}
+  to{background-position:50% 100%}
+}
+@media(max-width:760px){
+  .hero h1 em{font-size:1.02em;letter-spacing:-.04em}
+}
+@media(prefers-reduced-motion:reduce){.hero h1 em{animation:none}}
