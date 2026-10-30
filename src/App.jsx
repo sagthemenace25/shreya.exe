@@ -28,8 +28,8 @@ export default function App() {
   return <main>
     <nav className="nav">
       <a className="wordmark" href="#home">shreya<span>.exe</span></a>
-      <div className={\`nav-links \${menuOpen ? 'open' : ''}\`}>
-        {['about', 'projects', 'offscreen', 'timeline', 'contact'].map(item => <a key={item} href={\`#\${item}\`} onClick={closeMenu}>{item}</a>)}
+      <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
+        {['about', 'projects', 'offscreen', 'timeline', 'contact'].map(item => <a key={item} href={`#${item}`} onClick={closeMenu}>{item}</a>)}
       </div>
       <div className="nav-actions">
         <ThemeToggle theme={theme} setTheme={setTheme} />
