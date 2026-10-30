@@ -104,7 +104,7 @@ export default function Scene() {
           <Sculpture />
           <ParticleField />
           <Sparkles count={110} scale={8} size={2} speed={0.22} color="#d8cbff" />
-          <Environment preset="city" />
+          <Environment preset="studio" />
         </Suspense>
       </Canvas>
     </div>
