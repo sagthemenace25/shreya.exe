@@ -1,7 +1,129 @@
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, MeshDistortMaterial, Environment, Sparkles, MeshTransmissionMaterial } from '@react-three/drei'
+import { Float, MeshDistortMaterial, Environment, Sparkles } from '@react-three/drei'
 import { Suspense, useMemo, useRef } from 'react'
 import * as THREE from 'three'
+
+function Pencil({ position }) {
+  const ref = useRef()
+  useFrame((state, delta) => {
+    if (ref.current) {
+      ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.55) * 0.12 - 0.48
+      ref.current.rotation.y += delta * 0.12
+    }
+  })
+  return (
+    <Float speed={1.35} rotationIntensity={0.2} floatIntensity={0.55}>
+      <group ref={ref} position={position} scale={0.72}>
+        <mesh position={[0, 0.48, 0]} rotation={[0, 0, Math.PI / 2]}>
+          <cylinderGeometry args={[0.075, 0.075, 1.25, 12]} />
+          <meshPhysicalMaterial color="#c9b7ec" metalness={0.72} roughness={0.22} clearcoat={1} />
+        </mesh>
+        <mesh position={[0, 1.12, 0]} rotation={[0, 0, 0]}>
+          <coneGeometry args={[0.075, 0.2, 12]} />
+          <meshStandardMaterial color="#eadfff" metalness={0.5} roughness={0.25} />
+        </mesh>
+        <mesh position={[0, 1.235, 0]}>
+          <coneGeometry args={[0.018, 0.09, 8]} />
+          <meshStandardMaterial color="#282332" roughness={0.7} />
+        </mesh>
+        <mesh position={[0, -0.17, 0]}>
+          <cylinderGeometry args={[0.078, 0.078, 0.16, 16]} />
+          <meshStandardMaterial color="#a99acb" metalness={0.85} roughness={0.18} />
+        </mesh>
+        <mesh position={[0, -0.28, 0]}>
+          <cylinderGeometry args={[0.075, 0.075, 0.08, 16]} />
+          <meshStandardMaterial color="#e8d8ef" metalness={0.25} roughness={0.3} />
+        </mesh>
+      </group>
+    </Float>
+  )
+}
+
+function Guitar({ position }) {
+  const ref = useRef()
+  useFrame((state, delta) => {
+    if (!ref.current) return
+    ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.42) * 0.08 + 0.2
+    ref.current.rotation.y += delta * 0.08
+  })
+  return (
+    <Float speed={1.1} rotationIntensity={0.18} floatIntensity={0.48}>
+      <group ref={ref} position={position} scale={0.57} rotation={[0.15, 0.1, 0.25]}>
+        <mesh position={[0, -0.35, 0]}>
+          <sphereGeometry args={[0.62, 40, 32]} />
+          <meshPhysicalMaterial color="#9b79bd" metalness={0.55} roughness={0.22} clearcoat={1} />
+        </mesh>
+        <mesh position={[0, 0.1, 0.02]} scale={[0.78, 0.68, 0.72]}>
+          <sphereGeometry args={[0.55, 40, 32]} />
+          <meshPhysicalMaterial color="#c7a8df" metalness={0.48} roughness={0.2} clearcoat={1} />
+        </mesh>
+        <mesh position={[0, 0.52, 0.02]} scale={[0.48, 0.55, 0.72]}>
+          <sphereGeometry args={[0.48, 40, 32]} />
+          <meshPhysicalMaterial color="#b28dce" metalness={0.52} roughness={0.2} clearcoat={1} />
+        </mesh>
+        <mesh position={[0, 1.34, 0]} rotation={[0, 0, -0.08]}>
+          <boxGeometry args={[0.16, 1.75, 0.13]} />
+          <meshStandardMaterial color="#d7c5ee" metalness={0.75} roughness={0.22} />
+        </mesh>
+        <mesh position={[0, 2.28, 0]}>
+          <boxGeometry args={[0.3, 0.42, 0.16]} />
+          <meshPhysicalMaterial color="#a99acb" metalness={0.7} roughness={0.2} />
+        </mesh>
+        <mesh position={[0, -0.12, 0.405]}>
+          <circleGeometry args={[0.19, 40]} />
+          <meshStandardMaterial color="#282333" metalness={0.3} roughness={0.4} />
+        </mesh>
+        {[ -0.055, -0.018, 0.018, 0.055 ].map((x) => (
+          <mesh key={x} position={[x, 0.88, 0.095]}>
+            <boxGeometry args={[0.009, 2.65, 0.009]} />
+            <meshStandardMaterial color="#f5efff" metalness={0.9} roughness={0.18} />
+          </mesh>
+        ))}
+        {[-0.22, -0.11, 0, 0.11, 0.22].map((y) => (
+          <mesh key={y} position={[0, 1.34 + y, 0.09]}>
+            <boxGeometry args={[0.17, 0.012, 0.012]} />
+            <meshStandardMaterial color="#8c79ad" metalness={0.8} roughness={0.25} />
+          </mesh>
+        ))}
+      </group>
+    </Float>
+  )
+}
+
+function Globe({ position }) {
+  const ref = useRef()
+  useFrame((state, delta) => {
+    if (!ref.current) return
+    ref.current.rotation.y += delta * 0.18
+    ref.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.3) * 0.08
+  })
+  return (
+    <Float speed={0.9} rotationIntensity={0.12} floatIntensity={0.42}>
+      <group ref={ref} position={position} scale={0.62}>
+        <mesh>
+          <sphereGeometry args={[0.72, 48, 48]} />
+          <meshPhysicalMaterial color="#9885c3" metalness={0.42} roughness={0.28} clearcoat={1} />
+        </mesh>
+        {Array.from({ length: 5 }, (_, i) => (
+          <mesh key={i} rotation={[Math.PI / 2, 0, (i - 2) * 0.34]}>
+            <torusGeometry args={[0.724, 0.008, 8, 96]} />
+            <meshStandardMaterial color="#e8dcff" metalness={0.9} roughness={0.2} />
+          </mesh>
+        ))}
+        {[0, 1, 2, 3].map((i) => (
+          <mesh key={i} rotation={[0, (i * Math.PI) / 4, Math.PI / 2]}>
+            <torusGeometry args={[0.724, 0.007, 8, 96, Math.PI]} />
+            <meshStandardMaterial color="#c9b8eb" metalness={0.9} roughness={0.22} />
+          </mesh>
+        ))}
+        <mesh rotation={[0.4, 0.2, -0.5]}>
+          <torusGeometry args={[0.91, 0.012, 8, 120]} />
+          <meshStandardMaterial color="#f0e8ff" metalness={1} roughness={0.16} />
+        </mesh>
+      </group>
+    </Float>
+  )
+}
 
 function Sculpture() {
   const blob = useRef()
@@ -40,7 +162,6 @@ function Sculpture() {
           <MeshDistortMaterial color="#b9a9df" metalness={0.88} roughness={0.12} distort={0.48} speed={1.35} />
         </mesh>
       </Float>
-
       <mesh rotation={[0.9, 0.2, 0.4]} scale={2.12}>
         <torusGeometry args={[1, 0.012, 20, 320]} />
         <meshStandardMaterial color="#eee5ff" metalness={1} roughness={0.16} />
@@ -63,6 +184,9 @@ function Sculpture() {
           <meshPhysicalMaterial color="#a99acb" metalness={0.6} roughness={0.08} />
         </mesh>
       </Float>
+      <Pencil position={[2.45, 1.35, 0.3]} />
+      <Guitar position={[2.55, -1.55, 0.25]} />
+      <Globe position={[-2.5, 1.45, -0.35]} />
     </group>
   )
 }
@@ -94,7 +218,7 @@ function ParticleField() {
 
 export default function Scene() {
   return (
-    <div className="scene-wrap" aria-label="An animated lavender liquid-metal sculpture">
+    <div className="scene-wrap" aria-label="An animated lavender liquid-metal sculpture with a floating pencil, guitar and globe">
       <Canvas camera={{ position: [0, 0, 6.2], fov: 42 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }} performance={{ min: 0.55 }}>
         <ambientLight intensity={0.75} />
         <pointLight position={[4, 3, 4]} intensity={32} color="#e4d6ff" />
