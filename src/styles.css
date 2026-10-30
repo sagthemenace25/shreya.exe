@@ -214,3 +214,49 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
 }
 .hobby-transition .flight-object .mini-object-large{width:100%;height:100%}
 .hobby-transition .flight-object .mini-object-large canvas{width:100%!important;height:100%!important;display:block}
+
+
+/* Full-frame hero scale, then a calmer medium-sized object in the hobby page */
+.flight-object{width:min(68vw,760px);height:100svh;max-height:100vh}
+.flight-object .mini-object-large{width:100%;height:100%;transform:none}
+@keyframes pencil-wipe{
+  0%{left:-22%;top:50%;transform:translate(-50%,-50%) scale(.18) rotate(-10deg);opacity:0}
+  16%{opacity:1}
+  44%{left:50%;top:50%;transform:translate(-50%,-50%) scale(1.72) rotate(0deg);opacity:1}
+  100%{left:122%;top:50%;transform:translate(-50%,-50%) scale(1.28) rotate(0deg);opacity:1}
+}
+.gallery-object{height:340px;filter:drop-shadow(0 0 30px #a99acb55)}
+.mini-object-medium{width:100%;height:100%}
+.mini-object-medium canvas{width:100%!important;height:100%!important;display:block}
+.gallery-heading h2{
+  color:#d9d1e5;
+  background:linear-gradient(112deg,#77717f 0%,#f5f1ff 18%,#a99acb 36%,#fff 52%,#8e879c 68%,#e8e0f4 84%,#8e81aa 100%);
+  background-size:220% 100%;
+  background-position:0% 50%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 28px #bda9e51c;
+  animation:metal-type-shine 7s ease-in-out infinite alternate;
+}
+.gallery-heading .eyebrow{
+  color:#c9b9e7;
+  text-shadow:0 0 12px #bba5e866;
+}
+.gallery-heading>div>p:last-child{
+  color:#c0bac9;
+  background:linear-gradient(100deg,#918a9a,#eee8f7 48%,#a99acb 78%,#d8d0e4);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+@keyframes metal-type-shine{from{background-position:0% 50%}to{background-position:100% 50%}}
+@media(max-width:760px){
+  .flight-object{width:100vw;height:100svh}
+  .gallery-object{height:240px}
+  @keyframes pencil-wipe{
+    0%{left:-28%;top:50%;transform:translate(-50%,-50%) scale(.16) rotate(-10deg);opacity:0}
+    16%{opacity:1}
+    44%{left:50%;top:50%;transform:translate(-50%,-50%) scale(1.42) rotate(0deg);opacity:1}
+    100%{left:128%;top:50%;transform:translate(-50%,-50%) scale(1.12) rotate(0deg);opacity:1}
+  }
+}
+@media(prefers-reduced-motion:reduce){.gallery-heading h2{animation:none;background-position:50% 50%}}
