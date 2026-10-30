@@ -413,9 +413,9 @@ body{background-image:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(-
 .hero h1 em{
   position:relative;
   isolation:isolate;
-  font-family:'Titan One','Arial Rounded MT Bold',sans-serif;
+  font-family:'Coiny','Arial Rounded MT Bold',sans-serif;
   font-weight:400;
-  letter-spacing:-.052em;
+  letter-spacing:-.035em;
   line-height:1;
   color:#c8c8d0;
   background:
