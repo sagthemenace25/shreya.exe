@@ -22,7 +22,7 @@ export default function App() {
   const openHobby = (hobby) => {
     setActiveHobby(hobby)
     setGalleryReady(false)
-    window.setTimeout(() => setGalleryReady(true), 1380)
+    window.setTimeout(() => setGalleryReady(true), 2800)
   }
   const closeHobby = () => { setActiveHobby(null); setGalleryReady(false) }
 
